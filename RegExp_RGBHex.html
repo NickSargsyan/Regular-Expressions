@@ -1,0 +1,46 @@
+<html>
+
+	<head>
+
+		<script>
+
+			function RGBHex_validation()
+			{
+				//Regular expression that validates GUID format
+				var RGBHex_validation_RegExp = /^(#([0-9]|[ABCDEF]){6})$/i;
+
+				var string_to_validate;
+
+				//getting inputed string
+				string_to_validate = Form.input_string.value;
+
+				//checking the validation
+				if (RGBHex_validation_RegExp.test(string_to_validate))
+				{
+					//if valid
+					alert("String is valid");
+				}
+				else
+				{
+					//if invalid
+					alert("String is invalid");
+				}
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<p>Program checks string to be a valid GUID format</p>
+
+		<!--Form containes text input field and button to check the string validation-->
+		<form name="Form">
+			<input type="text" name="input_string" value="Input here a string to validate" style="width:300px">
+			<input type="button" onclick="RGBHex_validation()" value="Check">
+		</form>
+
+	</body>
+
+</html>
