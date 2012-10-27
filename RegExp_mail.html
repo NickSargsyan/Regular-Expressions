@@ -1,0 +1,46 @@
+<html>
+
+	<head>
+
+		<script>
+
+			function mail_validation()
+			{
+				//Regular expression that validates mail
+				var mail_validation_RegExp = /^(([a-z]|[A-Z])(([a-z]|[A-Z][0-9]){0,})[@](([a-z]|[A-Z]){0,})[.](([a-z]|[A-Z]){0,}))$/;
+
+				var string_to_validate;
+
+				//getting inputed string
+				string_to_validate = Form.input_string.value;
+
+				//checking the validation
+				if (mail_validation_RegExp.test(string_to_validate))
+				{
+					//if valid
+					alert("String is valid");
+				}
+				else
+				{
+					//if invalid
+					alert("String is invalid");
+				}
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<p>Program checks string to be a valid e-mail</p>
+
+		<!--Form containes text input field and button to check the string validation-->
+		<form name="Form">
+			<input type="text" name="input_string" value="Input here a string to validate" style="width:300px">
+			<input type="button" onclick="mail_validation()" value="Check">
+		</form>
+
+	</body>
+
+</html>
