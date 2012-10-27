@@ -1,0 +1,49 @@
+<html>
+
+	<head>
+
+		<script>
+
+			function pswd_validation()
+			{
+				//Regular expressions that validates strenght of password
+				var capital_validation_RegExp = /(\B[A-Z])|(\b[A-Z])/;
+				var number_validation_RegExp = /(\B[0-9])|(\b[0-9])/;
+				var noncapital_validation_RegExp = /(\B[a-z])|(\b[a-z])/;
+				var othersign_validation_RegExp = /(\B\W)|(\b\W)/;
+
+				var string_to_validate;
+
+				//getting inputed string
+				string_to_validate = Form.input_string.value;
+
+				//checking the validation
+				if (capital_validation_RegExp.test(string_to_validate) && number_validation_RegExp.test(string_to_validate) && noncapital_validation_RegExp.test(string_to_validate) && othersign_validation_RegExp.test(string_to_validate))
+				{
+					//if valid
+					alert("Strong password");
+				}
+				else
+				{
+					//if invalid
+					alert("Week password");
+				}
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<p>Program checks string to be a strong password</p>
+
+		<!--Form containes text input field and button to check the string validation-->
+		<form name="Form">
+			<input type="text" name="input_string" value="Input here a string to validate" style="width:300px">
+			<input type="button" onclick="pswd_validation()" value="Check">
+		</form>
+
+	</body>
+
+</html>
