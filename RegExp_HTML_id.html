@@ -1,0 +1,87 @@
+<html>
+
+	<head>
+
+		<script>
+
+			function HTML_id_validation()
+			{
+				var html_to_validate;
+
+				//getting inputed string
+				html_to_validate = Form.input_string.value;
+
+				$.get(html_to_validate, function(data) {
+        		var fileDom = $(data);
+
+        		HTML_id_validation_RegExp = /id="([A-Z]|[a-z])([A-Z]|[a-z]|[0-9]|[_]){0,}"/
+        		HTML_wrong_id_validation_RegExp = /id="([0-9]|[^0-9a-zA-z_])([A-Z]|[a-z]|[0-9][^0-9a-zA-z_]){0,}"/
+
+				//checking the validation
+				if (HTML_wrong_id_validation_RegExp.test(html_to_validate))
+				{
+					//If there is not proper Id name used
+
+					alert("There is not correct Id name used!");
+				}
+
+				//Getting the first Id
+				var Id_found = HTML_id_validation_RegExp.test(html_to_validate);
+
+				else if (Id_found)
+				{
+					//If there is an Id
+
+					//flag will choose continue or not the while loop
+					var flag = true;
+					
+					while (flag)
+					{			
+						if (html_to_validate.lastIndexOf(Id_found) != html_to_validate.indexOf(Id_found))
+						{
+							//If there another Id with same name
+
+							alert("There is an Id name used two or more times!");
+
+							//interrupting while loop
+							flag = false;
+						}
+						
+						Id_found = HTML_id_validation_RegExp.test(html_to_validate);
+
+						If(!Id_found)
+						{
+							//If there is not Id left
+
+							//Interrupring the while loop
+							flag = false;
+
+							alert("Id names in this document are proper!");
+						}
+					}
+				}
+				else
+				{
+					//If there is no Id used
+
+					alert("There is no Id used in this html document");
+				}
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<p>Program checks string to be a valid GUID format</p>
+
+		<!--Form containes text input field and button to check the string validation-->
+		<form name="Form">
+			<input type="text" name="input_string" value="Input here the path to html document to validate" style="width:300px">
+			<input type="button" onclick="HTML_id_validation()" value="Check">
+		</form>
+
+	</body>
+
+</html>
